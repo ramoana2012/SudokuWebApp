@@ -5,6 +5,7 @@ import { AuthContext } from "./AuthProvider";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import { ref, onValue } from "firebase/database";
+import sudokuicon from './sudokuicon.png'
 
 function Home() {
   const { currentUser } = useContext(AuthContext);
@@ -36,13 +37,18 @@ function Home() {
 
   return (
     <div className="mainContainer">
-      <h1>Home</h1>
+      <div className="homeContainer">
+      <div className="content">
+      <h1>SudokuWeb</h1>
+      <img src={sudokuicon} alt="Sudoku Icon" style={{width:70, height:70, marginBottom:20}}/>
       {currentUser && <p>Welcome, {username}</p>}
-      <div className="buttons">
-        <button onClick={clickLogin}>
+      <div>
+        <button className="buttons" onClick={clickLogin}>
           {currentUser ? "Log Out" : "Login"}
         </button>
-        {!currentUser && <button onClick={clickSignup}>Sign Up</button>}
+        {!currentUser && <button className="buttons"onClick={clickSignup}>Sign Up</button>}
+      </div>
+      </div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { auth, db } from "./base";
-import "./Signup.css";
+import "./LoginSignup.css";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { ref, set } from "firebase/database";
@@ -31,6 +31,9 @@ const SignUp = () => {
 
   return (
     <div>
+      <div className="screen">
+      <div className="border">
+      <div className="content">
       <form className="signupForm" onSubmit={handleSubmit}>
         <input
           placeholder="first name"
@@ -54,8 +57,11 @@ const SignUp = () => {
           required
           type="password"
         ></input>
-        <button>Sign Up</button>
+        <button className="buttons">Sign Up</button>
       </form>
+      </div>
+      </div>
+      </div>
     </div>
   );
 };
