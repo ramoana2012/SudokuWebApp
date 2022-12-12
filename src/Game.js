@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getSudoku } from "sudoku-gen";
 import { AuthContext } from "./AuthProvider";
 import { db } from "./base";
+import "./Game.css"
 
 var progress;
 
@@ -15,7 +16,8 @@ function OneCell(props) {
     if (cell === '-')
         return (
             <td>
-            <input
+            <input 
+                 className="textInput"
                  type='number'
                  max='9'
                  min='1'
@@ -31,7 +33,7 @@ function OneCell(props) {
             </td>
         );
     else
-        return (<td>{cell}</td>);
+        return (<td className="nonInputText">{cell}</td>);
 }
 
 // Rows for the grid
@@ -119,16 +121,27 @@ export default function Game() {
             navigate('/');
         }
 
-    return (<div>
-                <h1>Sudoku Puzzle</h1>
-                <table>
-                    <tbody>
-                        {grid}
-                    </tbody>
-                </table>
-                <button onClick={clickSave}>Save</button>
-                <button onClick={clickCheck}>Check Solution</button>
-                <button onClick={clickHome}>Back Home</button>
+    return (<div className="mainContainer">
+                <div className="content">
+                    <h1>Sudoku Puzzle</h1>
+                    <table style={tableStyle}>
+                        <tbody>
+                            {grid}
+                        </tbody>
+                    </table>
+                    <button className="buttons" onClick={clickSave}>Save</button>
+                    <button className="buttons" onClick={clickCheck}>Check Solution</button>
+                    <button className="buttons" onClick={clickHome}>Back Home</button>
+                </div>
             </div>
     );
 }
+
+var tableStyle = {
+    "border" : "1px solid black",
+    "border-radius": "2%",
+    "text-align": "center",
+    "margin": "auto",
+    "width": "25rem",
+    "height": "25rem",
+};
