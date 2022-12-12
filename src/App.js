@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import Login from "./Login";
 import SignUp from "./Signup";
+import DifficultySelect from "./DifficultySelect";
+import Game from "./Game";
 import { AuthProvider } from "./AuthProvider";
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<SignUp />} />
+            <Route exact path="/game" element={<Game />} />
+            <Route exact path="/newGame" element={<DifficultySelect />} />
           </Routes>
         </BrowserRouter>
       </div>

@@ -21,6 +21,9 @@ const SignUp = () => {
             firstName: firstName,
             lastName: lastName,
             email: email,
+            currentPuzzle: "",
+            puzzleSolution:"",
+            puzzleProgress:"",
           });
         })
         .catch((error) => console.log(error));
