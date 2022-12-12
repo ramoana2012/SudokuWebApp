@@ -10,6 +10,7 @@ import sudokuicon from './sudokuicon.png'
 function Home() {
   const { currentUser } = useContext(AuthContext);
   const [username, setUsername] = useState("");
+  const [currentPuzzle, setCurrentPuzzle] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     if (currentUser) {
@@ -18,6 +19,7 @@ function Home() {
         if (snapshot.exists()) {
           var data = snapshot.val();
           setUsername(data.firstName + " " + data.lastName);
+          setCurrentPuzzle(data.currentPuzzle);
         }
       });
     }
@@ -35,6 +37,14 @@ function Home() {
     navigate("/signup");
   };
 
+  const clickNewGame = ()=> {
+    navigate('/newGame');
+  };
+
+  const clickContinue = ()=> {
+    navigate('/game', {state:{difficulty: 'Easy', cont: true}})
+  };
+
   return (
     <div className="mainContainer">
       <div className="homeContainer">
@@ -43,6 +53,8 @@ function Home() {
       <img src={sudokuicon} alt="Sudoku Icon" style={{width:70, height:70, marginBottom:20}}/>
       {currentUser && <p>Welcome, {username}</p>}
       <div>
+        {currentUser && currentPuzzle !== "" && <button className="buttons" onClick={clickContinue}>Continue</button>}
+        {currentUser && <button className="buttons" onClick={clickNewGame}>New Game</button>}
         <button className="buttons" onClick={clickLogin}>
           {currentUser ? "Log Out" : "Login"}
         </button>
@@ -53,5 +65,4 @@ function Home() {
     </div>
   );
 }
-
 export default Home;
