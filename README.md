@@ -1,5 +1,7 @@
 # Sudoku Web App
 
+link: https://sudokuappfirebase.web.app/
+
 CSC2053 final group project. This is a Sudoku web application that uses React and Firebase to allow users to play Sudoku puzzles at varying difficulties. 
 
 ## Authors
